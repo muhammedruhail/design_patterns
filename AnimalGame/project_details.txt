@@ -1,0 +1,8 @@
+Apply atleast 10 design patterns in an Animal Game project. 
+
+conditions
+
+1. package name should be com.your_name.animalgame
+2. variable names and methods should have 3 letter suffix representing your name.
+  eg. Animal animalAPA, getAnimalAPA() etc
+3. Date of submission-> 17/04/2020, Friday 9.30 am
