@@ -44,7 +44,7 @@ public class PropertyReaderSKP {
 	public PropertyReaderSKP() {
 
 		super();
-		System.out.println(System.getProperty("user.dir"));
+		// System.out.println(System.getProperty("user.dir"));
 
 		propertiesSKP = new Properties();
 
