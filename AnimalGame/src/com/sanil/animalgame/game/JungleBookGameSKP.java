@@ -16,6 +16,7 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.decorator.HeroAnimalDecoratorSKP;
 import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalJBFactorySKP;
 import com.sanil.animalgame.factory.MobileBasedAnimalJBFactorySKP;
@@ -29,7 +30,8 @@ import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
  * One of the implementation of {@code AnimalGame}. It contains factory methods
- * and implemented steps as part of template method design pattern
+ * and implemented steps as part of template method design pattern. createHero
+ * method uses decorator pattern
  * 
  * @author Sanil kumar P
  */
@@ -90,7 +92,10 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 	protected AnimalSKP createHeroCharacter() {
 
 		AnimalSKP animal = getAppropriateFactory().createHeroCharacter();
-		animal.setBehaviour(new FeralHumanChildSKP());
+
+		// decorator pattern applied
+		animal.setBehaviour(new HeroAnimalDecoratorSKP(new FeralHumanChildSKP()));
+
 		return animal;
 	}
 
@@ -111,4 +116,5 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 		} else
 			return new MobileBasedAnimalJBFactorySKP();
 	}
+
 }

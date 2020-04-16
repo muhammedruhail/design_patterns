@@ -13,25 +13,39 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.sanil.animalgame.strategy;
+package com.sanil.animalgame.decorator;
+
+import com.sanil.animalgame.strategy.BehaviourStrategySKP;
 
 /**
- * One type of animal behaviour. Concrete implementation class of strategy
- * pattern
+ * Decorator to apply on animals
  * 
  * @author Sanil kumar P
  */
-public class AngryLionSKP extends BehaviourStrategySKP {
+public class CunningAnimalDecoratorSKP extends AnimalDecoratorSKP {
 
 	/**
-	 * method to describe angry lion behaviour
+	 * Field to wrap other behaviours to implement decorator pattern
+	 */
+	protected BehaviourStrategySKP behaviour;
+
+	/**
+	 * Constructor for class CunningAnimalDecoratorSKP
 	 * 
-	 * @return behaviour
+	 * @param behaviour
+	 */
+	public CunningAnimalDecoratorSKP(BehaviourStrategySKP behaviour) {
+		super();
+		this.behaviour = behaviour;
+	}
+
+	/**
+	 * Decorator to decorate an animal's cunning nature
 	 */
 	@Override
 	public String showBehaviourSKP() {
-		return " is a furious lion";
 
+		return behaviour.showBehaviourSKP() + " and he was always cunning in applying tricks to get his things done";
 	}
 
 }

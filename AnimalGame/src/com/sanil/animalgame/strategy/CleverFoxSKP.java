@@ -30,7 +30,7 @@ public class CleverFoxSKP extends BehaviourStrategySKP {
 	 */
 	@Override
 	public String showBehaviourSKP() {
-		return " is a clever fox.";
+		return " is a clever fox";
 
 	}
 

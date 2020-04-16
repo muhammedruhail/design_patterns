@@ -16,6 +16,7 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.decorator.CunningAnimalDecoratorSKP;
 import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalSRFactorySKP;
 import com.sanil.animalgame.factory.MobileBasedAnimalSRFactorySKP;
@@ -27,7 +28,7 @@ import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
  * It contains factory methods and implemented steps as part of template method
- * design pattern
+ * design pattern. createHero method uses decorator pattern
  * 
  * @author Sanil kumar P
  */
@@ -75,14 +76,16 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 	}
 
 	/**
-	 * Implementation of factory method to get the hero character
+	 * Implementation of factory method to get the hero character. It uses decorator
+	 * pattern to alter its behaviour
 	 */
 	@Override
 	protected AnimalSKP createHeroCharacter() {
 
 		AnimalSKP animal = getAppropriateFactory().createHeroCharacter();
 
-		animal.setBehaviour(new CleverFoxSKP());
+		// decorator pattern applied
+		animal.setBehaviour(new CunningAnimalDecoratorSKP(new CleverFoxSKP()));
 		return animal;
 	}
 
