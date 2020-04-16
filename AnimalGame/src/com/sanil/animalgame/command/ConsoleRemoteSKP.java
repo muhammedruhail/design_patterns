@@ -20,24 +20,24 @@ package com.sanil.animalgame.command;
  *
  * @author Sanil kumar P
  */
-public class ConsoleRemote {
+public class ConsoleRemoteSKP {
 
 	/**
 	 * Self referencing object for implementing singleton pattern
 	 */
-	private static ConsoleRemote remote;
+	private static ConsoleRemoteSKP remoteSKP;
 
 	/**
 	 * Command for this remote class to execute.
 	 */
-	private CommandSKP command;
+	private CommandSKP commandSKP;
 
 	/**
 	 * Constructor for class ConsoleRemote
 	 * 
-	 * @param command
+	 * @param commandSKP
 	 */
-	private ConsoleRemote() {
+	private ConsoleRemoteSKP() {
 		super();
 
 	}
@@ -48,7 +48,7 @@ public class ConsoleRemote {
 	 * @return command
 	 */
 	public CommandSKP getCommand() {
-		return command;
+		return commandSKP;
 	}
 
 	/**
@@ -57,24 +57,24 @@ public class ConsoleRemote {
 	 * @param command
 	 */
 	public void setCommand(CommandSKP command) {
-		this.command = command;
+		this.commandSKP = command;
 	}
 
 	/**
 	 * Method to trigger command execute to clear screen
 	 */
 	public void clearScreen() {
-		command.execute();
+		commandSKP.execute();
 	}
 
 	/**
 	 * Getting the only single object of this class
 	 * 
-	 * @return {@link ConsoleRemote}
+	 * @return {@link ConsoleRemoteSKP}
 	 */
-	public static ConsoleRemote getConsoleRemoteInstance() {
+	public static ConsoleRemoteSKP getConsoleRemoteInstance() {
 
-		remote = (remote == null) ? new ConsoleRemote() : remote;
-		return remote;
+		remoteSKP = (remoteSKP == null) ? new ConsoleRemoteSKP() : remoteSKP;
+		return remoteSKP;
 	}
 }

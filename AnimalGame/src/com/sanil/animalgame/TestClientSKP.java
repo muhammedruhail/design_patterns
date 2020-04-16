@@ -19,7 +19,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.sanil.animalgame.command.ConsoleRemote;
+import com.sanil.animalgame.command.ConsoleRemoteSKP;
 import com.sanil.animalgame.command.UnixConsoleCommandSKP;
 import com.sanil.animalgame.command.WindowsConsoleCommandSKP;
 import com.sanil.animalgame.game.AnimalGameSKP;
@@ -71,7 +71,7 @@ public class TestClientSKP {
 		System.out.print("\nSelect your choice : ");
 		String option = scanner.next();
 
-		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
+		ConsoleRemoteSKP remote = ConsoleRemoteSKP.getConsoleRemoteInstance();
 
 		// remote.clearScreen();
 
@@ -85,13 +85,13 @@ public class TestClientSKP {
 			if (option.equals("1")) {
 				game = JungleBookGameSKP.getGameInstanceSKP();
 				nextAskingCountSKP -= nextAskingCountSKP;
-				game.start();
+				game.startSKP();
 			}
 
 			else if (option.equals("2")) {
 				game = SoothranNSheruGameSKP.getGameInstanceSKP();
 				nextAskingCountSKP -= nextAskingCountSKP;
-				game.start();
+				game.startSKP();
 			}
 
 			else {
@@ -131,7 +131,7 @@ public class TestClientSKP {
 	public void setUpPlatformBasedConsoleSKP() {
 
 		String os = System.getProperty("os.name");
-		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
+		ConsoleRemoteSKP remote = ConsoleRemoteSKP.getConsoleRemoteInstance();
 
 		if (os.equalsIgnoreCase("Linux")) {
 			remote.setCommand(new UnixConsoleCommandSKP(new UnixConsoleSKP()));

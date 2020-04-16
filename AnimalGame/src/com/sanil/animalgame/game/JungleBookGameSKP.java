@@ -16,6 +16,11 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
+import com.sanil.animalgame.factory.IOTBasedAnimalJBFactorySKP;
+import com.sanil.animalgame.factory.MobileBasedAnimalJBFactorySKP;
+import com.sanil.animalgame.factory.WebBasedAnimalJBFactorySKP;
+import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
  * One of the implementation of {@code AnimalGame}
@@ -34,6 +39,7 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 				+ "╔╗║║║║║╔╗╣╔╗║║║║═╣║╔═╗║╔╗║╔╗║╚╝╝║║╔═╣╔╗║╚╝║║═╣\n"
 				+ "║╚╝║╚╝║║║║╚╝║╚╣║═╣║╚═╝║╚╝║╚╝║╔╗╗║╚╩═║╔╗║║║║║═╣\n"
 				+ "╚══╩══╩╝╚╩═╗╠═╩══╝╚═══╩══╩══╩╝╚╝╚═══╩╝╚╩╩╩╩══╝\n" + "─────────╔═╝║\n" + "─────────╚══╝");
+
 	}
 
 	/**
@@ -46,21 +52,48 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 		return (gameInstanceSKP != null) ? gameInstanceSKP : (gameInstanceSKP = new JungleBookGameSKP());
 	}
 
+	/**
+	 * Implementation of factory method to get the friend character
+	 */
 	@Override
 	protected AnimalSKP createFriendCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createFriendCharacter();
 	}
 
+	/**
+	 * Implementation of factory method to get the villain character
+	 */
 	@Override
 	protected AnimalSKP createVillainCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createVillainCharacter();
 	}
 
+	/**
+	 * Implementation of factory method to get the hero character
+	 */
 	@Override
 	protected AnimalSKP createHeroCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createHeroCharacter();
+	}
+
+	/**
+	 * Private method to decide appropriate factory for the
+	 * {@link JungleBookGameSKP}
+	 * 
+	 * @return {@link AnimalCharacterAbstractFactorySKP} for creating appropriate
+	 *         characters
+	 */
+	private AnimalCharacterAbstractFactorySKP getAppropriateFactory() {
+
+		String animalTypeSKP = new PropertyReaderSKP().getPropertyValue("animals.type");
+		if (animalTypeSKP.equals("iot")) {
+			return new IOTBasedAnimalJBFactorySKP();
+		} else if (animalTypeSKP.equals("web")) {
+			return new WebBasedAnimalJBFactorySKP();
+		} else
+			return new MobileBasedAnimalJBFactorySKP();
 	}
 }

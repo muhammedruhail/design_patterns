@@ -16,6 +16,11 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
+import com.sanil.animalgame.factory.IOTBasedAnimalSRFactorySKP;
+import com.sanil.animalgame.factory.MobileBasedAnimalSRFactorySKP;
+import com.sanil.animalgame.factory.WebBasedAnimalSRFactorySKP;
+import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
  * TODO Provide a detailed description here
@@ -25,7 +30,9 @@ import com.sanil.animalgame.animals.AnimalSKP;
 public class SoothranNSheruGameSKP extends AnimalGameSKP {
 
 	private SoothranNSheruGameSKP() {
-		super("Soothran N Sheru");
+		super("\n" + "░█▀▀▀█ █▀▀█ █▀▀█ ▀▀█▀▀ █──█ █▀▀█ █▀▀█ █▀▀▄ 　 ░█▄─░█ 　 ░█▀▀▀█ █──█ █▀▀ █▀▀█ █──█ \n"
+				+ "─▀▀▀▄▄ █──█ █──█ ──█── █▀▀█ █▄▄▀ █▄▄█ █──█ 　 ░█░█░█ 　 ─▀▀▀▄▄ █▀▀█ █▀▀ █▄▄▀ █──█ \n"
+				+ "░█▄▄▄█ ▀▀▀▀ ▀▀▀▀ ──▀── ▀──▀ ▀─▀▀ ▀──▀ ▀──▀ 　 ░█──▀█ 　 ░█▄▄▄█ ▀──▀ ▀▀▀ ▀─▀▀ ─▀▀▀");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,22 +46,49 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 		return (gameInstanceSKP != null) ? gameInstanceSKP : (gameInstanceSKP = new SoothranNSheruGameSKP());
 	}
 
+	/**
+	 * Implementation of factory method to get the friend character
+	 */
 	@Override
 	protected AnimalSKP createFriendCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createFriendCharacter();
 	}
 
+	/**
+	 * Implementation of factory method to get the villain character
+	 */
 	@Override
 	protected AnimalSKP createVillainCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createVillainCharacter();
 	}
 
+	/**
+	 * Implementation of factory method to get the hero character
+	 */
 	@Override
 	protected AnimalSKP createHeroCharacter() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return getAppropriateFactory().createHeroCharacter();
+	}
+
+	/**
+	 * Private method to decide appropriate factory for the
+	 * {@link SoothranNSheruGameSKP}
+	 * 
+	 * @return {@link AnimalCharacterAbstractFactorySKP} for creating appropriate
+	 *         characters
+	 */
+	private AnimalCharacterAbstractFactorySKP getAppropriateFactory() {
+
+		String animalTypeSKP = new PropertyReaderSKP().getPropertyValue("animals.type");
+		if (animalTypeSKP.equals("iot")) {
+			return new IOTBasedAnimalSRFactorySKP();
+		} else if (animalTypeSKP.equals("web")) {
+			return new WebBasedAnimalSRFactorySKP();
+		} else
+			return new MobileBasedAnimalSRFactorySKP();
 	}
 
 }

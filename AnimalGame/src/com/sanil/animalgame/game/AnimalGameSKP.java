@@ -16,7 +16,7 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
-import com.sanil.animalgame.command.ConsoleRemote;
+import com.sanil.animalgame.command.ConsoleRemoteSKP;
 
 /**
  * Animal game abstract class. Only one instance of its children will be
@@ -58,17 +58,17 @@ public abstract class AnimalGameSKP {
 	/**
 	 * The enitire game logic is controlled by this method
 	 */
-	public void start() {
-		showTheWelcomeScreen();
+	public void startSKP() {
+		showTheWelcomeScreenSKP();
 		showCharacterDescription();
-		showGameDetails();
-		placeAnimalsInCaves();
+		showGameDetailsSKP();
+		placeAnimalsInCavesSKP();
 	}
 
 	/**
 	 * The method shows how to play the game
 	 */
-	private void showGameDetails() {
+	private void showGameDetailsSKP() {
 		// TODO Auto-generated method stub
 
 	}
@@ -76,7 +76,7 @@ public abstract class AnimalGameSKP {
 	/**
 	 * Place animals randomly in different caves
 	 */
-	private void placeAnimalsInCaves() {
+	private void placeAnimalsInCavesSKP() {
 		// TODO Auto-generated method stub
 
 	}
@@ -84,27 +84,23 @@ public abstract class AnimalGameSKP {
 	/**
 	 * Shows the welcome screen
 	 */
-	protected void showTheWelcomeScreen() {
+	protected void showTheWelcomeScreenSKP() {
 
-		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
-		remote.clearScreen();
-		String loading = "＃＃";
+		ConsoleRemoteSKP remoteSKP = ConsoleRemoteSKP.getConsoleRemoteInstance();
+		remoteSKP.clearScreen();
+		String loadingSKP = "＃＃";
 		for (int i = 0; i < 3; i++) {
 			System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\t\t");
 			System.out.println("powered by animal game\n\n\n\t\t\t");
-			System.out.print("\t\t\t𝐿𝑜𝑎𝑑𝑖𝑛𝑔  " + (loading += loading));
+			System.out.print("\t\t\t𝐿𝑜𝑎𝑑𝑖𝑛𝑔  " + (loadingSKP += loadingSKP));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			remote.clearScreen();
+			remoteSKP.clearScreen();
 		}
-		/*
-		 * System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\n\t\t\t\t\n");
-		 * System.out.println("\t\tpowered by animal game\n\n\n\n\n");
-		 */
 	}
 
 	/**
