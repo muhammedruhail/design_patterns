@@ -108,9 +108,14 @@ public abstract class AnimalGameSKP {
 	 */
 	private void showCharacterDescription() {
 		// TODO Auto-generated method stub
+		ConsoleRemoteSKP.getConsoleRemoteInstance().clearScreen();
+		System.out.println("\n\n\n\n\t____________Characters and story summary_________________\n");
 		this.heroCharacter = createHeroCharacter();
 		this.villainCharacter = createVillainCharacter();
 		this.friendCharacter = createFriendCharacter();
+		heroCharacter.showBehaviour();
+		friendCharacter.showBehaviour();
+		villainCharacter.showBehaviour();
 
 	}
 

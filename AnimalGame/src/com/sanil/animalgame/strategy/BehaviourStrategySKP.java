@@ -16,11 +16,17 @@
 package com.sanil.animalgame.strategy;
 
 /**
- * TODO Provide a detailed description here
+ * Implementing strategy pattern. A abstract class to create different
+ * behaviours
  * 
  * @author Sanil kumar P
  */
 public abstract class BehaviourStrategySKP {
 
-	public abstract void showBehaviourSKP();
+	/**
+	 * Abstract method to show behaviour
+	 * 
+	 * @return behaviour in {@link String}
+	 */
+	public abstract String showBehaviourSKP();
 }

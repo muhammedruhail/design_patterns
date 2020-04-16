@@ -20,10 +20,14 @@ import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalSRFactorySKP;
 import com.sanil.animalgame.factory.MobileBasedAnimalSRFactorySKP;
 import com.sanil.animalgame.factory.WebBasedAnimalSRFactorySKP;
+import com.sanil.animalgame.strategy.AngryLionSKP;
+import com.sanil.animalgame.strategy.CleverFoxSKP;
+import com.sanil.animalgame.strategy.FoolishTigerSKP;
 import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
- * TODO Provide a detailed description here
+ * It contains factory methods and implemented steps as part of template method
+ * design pattern
  * 
  * @author Sanil kumar P
  */
@@ -52,7 +56,9 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createFriendCharacter() {
 
-		return getAppropriateFactory().createFriendCharacter();
+		AnimalSKP animal = getAppropriateFactory().createFriendCharacter();
+		animal.setBehaviour(new FoolishTigerSKP());
+		return animal;
 	}
 
 	/**
@@ -61,7 +67,11 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createVillainCharacter() {
 
-		return getAppropriateFactory().createVillainCharacter();
+		AnimalSKP animal = getAppropriateFactory().createVillainCharacter();
+
+		animal.setBehaviour(new AngryLionSKP());
+		return animal;
+
 	}
 
 	/**
@@ -70,7 +80,10 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createHeroCharacter() {
 
-		return getAppropriateFactory().createHeroCharacter();
+		AnimalSKP animal = getAppropriateFactory().createHeroCharacter();
+
+		animal.setBehaviour(new CleverFoxSKP());
+		return animal;
 	}
 
 	/**

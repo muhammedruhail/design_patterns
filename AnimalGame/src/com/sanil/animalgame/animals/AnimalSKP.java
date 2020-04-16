@@ -15,8 +15,15 @@
 */
 package com.sanil.animalgame.animals;
 
+import com.sanil.animalgame.strategy.BehaviourStrategySKP;
+
 /**
- * Animal super class
+ * Animal super class. Strategy pattern implemented
+ * 
+ * @author Sanil kumar P
+ */
+/**
+ * TODO Provide a detailed description here
  * 
  * @author Sanil kumar P
  */
@@ -25,7 +32,41 @@ public abstract class AnimalSKP {
 	/**
 	 * name of animal
 	 */
-	protected String name;
+	protected String nameSKP;
+
+	/**
+	 * @return name
+	 */
+	public String getName() {
+		return nameSKP;
+	}
+
+	/**
+	 * setter
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.nameSKP = name;
+	}
+
+	/**
+	 * Behaviour of animal. Strategy pattern applied
+	 */
+	protected BehaviourStrategySKP behaviourSKP;
+
+	/**
+	 * getter for behaviour
+	 * 
+	 * @return behaviour
+	 */
+	public BehaviourStrategySKP getBehaviour() {
+		return behaviourSKP;
+	}
+
+	public void setBehaviour(BehaviourStrategySKP behaviour) {
+		this.behaviourSKP = behaviour;
+	}
 
 	/**
 	 * Constructor for class AnimalSKP
@@ -35,9 +76,21 @@ public abstract class AnimalSKP {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Parameterized constructor for class AnimalSKP
+	 * 
+	 * @param name
+	 */
 	public AnimalSKP(String name) {
 		super();
-		this.name = name;
+		this.nameSKP = name;
+	}
+
+	/**
+	 * Showing animal behaviour
+	 */
+	public void showBehaviour() {
+		System.out.println("\n\t\t" + nameSKP + ": " + nameSKP + "" + this.behaviourSKP.showBehaviourSKP());
 	}
 
 	/**
@@ -45,7 +98,7 @@ public abstract class AnimalSKP {
 	 */
 	@Override
 	public String toString() {
-		return name;
+		return nameSKP;
 	}
 
 }

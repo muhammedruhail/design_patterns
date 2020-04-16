@@ -20,10 +20,16 @@ import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalJBFactorySKP;
 import com.sanil.animalgame.factory.MobileBasedAnimalJBFactorySKP;
 import com.sanil.animalgame.factory.WebBasedAnimalJBFactorySKP;
+import com.sanil.animalgame.strategy.BehaviourStrategySKP;
+import com.sanil.animalgame.strategy.FeralHumanChildSKP;
+import com.sanil.animalgame.strategy.GoodBlackPantherSKP;
+import com.sanil.animalgame.strategy.GreedySlothBearSKP;
+import com.sanil.animalgame.strategy.WickedTigerSKP;
 import com.sanil.animalgame.utility.PropertyReaderSKP;
 
 /**
- * One of the implementation of {@code AnimalGame}
+ * One of the implementation of {@code AnimalGame}. It contains factory methods
+ * and implemented steps as part of template method design pattern
  * 
  * @author Sanil kumar P
  */
@@ -58,7 +64,12 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createFriendCharacter() {
 
-		return getAppropriateFactory().createFriendCharacter();
+		AnimalSKP animal = getAppropriateFactory().createFriendCharacter();
+
+		BehaviourStrategySKP behaviour = (animal.getName().equals("bagheera")) ? new GoodBlackPantherSKP()
+				: new GreedySlothBearSKP();
+		animal.setBehaviour(behaviour);
+		return animal;
 	}
 
 	/**
@@ -67,7 +78,9 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createVillainCharacter() {
 
-		return getAppropriateFactory().createVillainCharacter();
+		AnimalSKP animal = getAppropriateFactory().createVillainCharacter();
+		animal.setBehaviour(new WickedTigerSKP());
+		return animal;
 	}
 
 	/**
@@ -76,7 +89,9 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 	@Override
 	protected AnimalSKP createHeroCharacter() {
 
-		return getAppropriateFactory().createHeroCharacter();
+		AnimalSKP animal = getAppropriateFactory().createHeroCharacter();
+		animal.setBehaviour(new FeralHumanChildSKP());
+		return animal;
 	}
 
 	/**
