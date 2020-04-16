@@ -26,7 +26,7 @@ import com.sanil.animalgame.animals.WebBasedTigerSKP;
  * 
  * @author Sanil kumar P
  */
-public class WebBasedAnimalJBFactorySKP extends AnimalCharacterFactorySKP {
+public class WebBasedAnimalJBFactorySKP extends AnimalCharacterAbstractFactorySKP {
 
 	/**
 	 * Concrete factory method to create hero character

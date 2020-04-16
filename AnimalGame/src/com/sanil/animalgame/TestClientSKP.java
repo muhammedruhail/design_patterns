@@ -17,9 +17,14 @@ package com.sanil.animalgame;
 
 import java.util.Scanner;
 
+import com.sanil.animalgame.command.ConsoleRemote;
+import com.sanil.animalgame.command.UnixConsoleCommandSKP;
+import com.sanil.animalgame.command.WindowsConsoleCommandSKP;
 import com.sanil.animalgame.game.AnimalGameSKP;
 import com.sanil.animalgame.game.JungleBookGameSKP;
 import com.sanil.animalgame.game.SoothranNSheruGameSKP;
+import com.sanil.animalgame.utility.UnixConsoleSKP;
+import com.sanil.animalgame.utility.WindowsConsoleSKP;
 
 /**
  * This is a sample animal game project to demonstrate gang of four design
@@ -42,6 +47,7 @@ public class TestClientSKP {
 		// reference to store the singleton game object
 		AnimalGameSKP game = null;
 
+		new TestClientSKP().setUpPlatformBasedConsole();
 		// displaying user to enter the inputs and play the game
 		System.out.println("\n\n\n\n\n\n\n\tＷｅｌｃｏｍｅ ｔｏ Ａｎｉｍａｌ ｇａｍｅ" + "\n\t\t\t\tcopyright@2020\n");
 
@@ -52,7 +58,13 @@ public class TestClientSKP {
 
 		System.out.print("\nSelect your choice : ");
 		String option = scanner.next();
-
+		
+		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
+	
+		remote.clearScreen();
+		
+		//System.out.println("remote: " + remote + ", console command: " + remote.getCommand());
+		
 		int nextAskingCountSKP = 2;
 
 		// asking user to select his option after a failed attempt
@@ -83,4 +95,26 @@ public class TestClientSKP {
 		System.exit(0);
 	}
 
+	public void setUpPlatformBasedConsole() {
+
+		String os = System.getProperty("os.name");
+		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
+
+		if (os.equalsIgnoreCase("Linux")) {
+			remote.setCommand(new UnixConsoleCommandSKP(new UnixConsoleSKP()));
+			System.out.println(os);
+		}
+
+		else if (os.equalsIgnoreCase("Windows")) {
+			remote.setCommand(new WindowsConsoleCommandSKP(new WindowsConsoleSKP()));
+		}
+
+		else {
+			System.out.println("Sorry..your console is currently not supported");
+			System.exit(0);
+		}
+
+		//System.out.println("remote: " + remote + ", console command: " + remote.getCommand());
+
+	}
 }

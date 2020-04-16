@@ -25,7 +25,7 @@ import com.sanil.animalgame.animals.IOTBasedTigerSKP;
  * 
  * @author Sanil kumar P
  */
-public class IOTBasedAnimalSRFactorySKP extends AnimalCharacterFactorySKP {
+public class IOTBasedAnimalSRFactorySKP extends AnimalCharacterAbstractFactorySKP {
 
 	/**
 	 * Concrete factory method to create hero character

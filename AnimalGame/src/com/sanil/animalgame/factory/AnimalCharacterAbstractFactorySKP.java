@@ -23,7 +23,7 @@ import com.sanil.animalgame.animals.AnimalSKP;
  * implements factory method to create objects.
  * @author Sanil kumar P
  */
-public abstract class AnimalCharacterFactorySKP {
+public abstract class AnimalCharacterAbstractFactorySKP {
 
 	/**
 	 * Abstract factory method to create heroic character
