@@ -16,6 +16,8 @@
 package com.sanil.animalgame;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.sanil.animalgame.command.ConsoleRemote;
 import com.sanil.animalgame.command.UnixConsoleCommandSKP;
@@ -23,6 +25,7 @@ import com.sanil.animalgame.command.WindowsConsoleCommandSKP;
 import com.sanil.animalgame.game.AnimalGameSKP;
 import com.sanil.animalgame.game.JungleBookGameSKP;
 import com.sanil.animalgame.game.SoothranNSheruGameSKP;
+import com.sanil.animalgame.utility.PropertyReaderSKP;
 import com.sanil.animalgame.utility.UnixConsoleSKP;
 import com.sanil.animalgame.utility.WindowsConsoleSKP;
 
@@ -35,6 +38,7 @@ import com.sanil.animalgame.utility.WindowsConsoleSKP;
  */
 public class TestClientSKP {
 
+	private static Logger logger = Logger.getLogger("Animal Game");
 	/**
 	 * main method to start program execution
 	 * 
@@ -47,7 +51,10 @@ public class TestClientSKP {
 		// reference to store the singleton game object
 		AnimalGameSKP game = null;
 
-		new TestClientSKP().setUpPlatformBasedConsole();
+		new TestClientSKP().setUpPlatformBasedConsoleSKP();
+		
+		new TestClientSKP().setupLoggingLevelSKP();
+		
 		// displaying user to enter the inputs and play the game
 		System.out.println("\n\n\n\n\n\n\n\tＷｅｌｃｏｍｅ ｔｏ Ａｎｉｍａｌ ｇａｍｅ" + "\n\t\t\t\tcopyright@2020\n");
 
@@ -63,7 +70,7 @@ public class TestClientSKP {
 	
 		remote.clearScreen();
 		
-		//System.out.println("remote: " + remote + ", console command: " + remote.getCommand());
+		logger.fine("remote: " + remote + ", console command: " + remote.getCommand());
 		
 		int nextAskingCountSKP = 2;
 
@@ -95,14 +102,23 @@ public class TestClientSKP {
 		System.exit(0);
 	}
 
-	public void setUpPlatformBasedConsole() {
+	/**
+	 * Setup logging level based on the level configured in the property file
+	 */
+	private void setupLoggingLevelSKP() {
+		PropertyReaderSKP reader = new PropertyReaderSKP();
+		logger.setLevel(Level.parse(reader.getPropertyValue("logging.level")));
+		logger.info(reader.getPropertyValue("logging.level"));
+	}
+
+	public void setUpPlatformBasedConsoleSKP() {
 
 		String os = System.getProperty("os.name");
 		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
 
 		if (os.equalsIgnoreCase("Linux")) {
 			remote.setCommand(new UnixConsoleCommandSKP(new UnixConsoleSKP()));
-			System.out.println(os);
+			logger.fine(os);
 		}
 
 		else if (os.equalsIgnoreCase("Windows")) {
@@ -114,7 +130,7 @@ public class TestClientSKP {
 			System.exit(0);
 		}
 
-		//System.out.println("remote: " + remote + ", console command: " + remote.getCommand());
+		logger.fine("remote: " + remote + ", console command: " + remote.getCommand());
 
 	}
 }

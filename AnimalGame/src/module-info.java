@@ -18,4 +18,5 @@
  *
  */
 module com.sanil.animalgame {
+	requires java.logging;
 }
