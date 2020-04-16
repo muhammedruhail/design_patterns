@@ -32,13 +32,15 @@ import com.sanil.animalgame.utility.WindowsConsoleSKP;
 /**
  * This is a sample animal game project to demonstrate gang of four design
  * patterns. The aim is to factor at least 10 patterns together in this game.
- * The included patterns are singleton, builder, factory method(is going on) ..
+ * The included patterns are singleton, builder, factory method, abstract
+ * factory, command, template method(is going on) ..
  * 
  * @author Sanil kumar P
  */
 public class TestClientSKP {
 
 	private static Logger logger = Logger.getLogger("Animal Game");
+
 	/**
 	 * main method to start program execution
 	 * 
@@ -51,10 +53,13 @@ public class TestClientSKP {
 		// reference to store the singleton game object
 		AnimalGameSKP game = null;
 
+		// set platform based configuration to implement same operation in different
+		// consoles
 		new TestClientSKP().setUpPlatformBasedConsoleSKP();
-		
+
+		// setup logging level
 		new TestClientSKP().setupLoggingLevelSKP();
-		
+
 		// displaying user to enter the inputs and play the game
 		System.out.println("\n\n\n\n\n\n\n\tＷｅｌｃｏｍｅ ｔｏ Ａｎｉｍａｌ ｇａｍｅ" + "\n\t\t\t\tcopyright@2020\n");
 
@@ -65,13 +70,13 @@ public class TestClientSKP {
 
 		System.out.print("\nSelect your choice : ");
 		String option = scanner.next();
-		
+
 		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
-	
+
 		remote.clearScreen();
-		
+
 		logger.fine("remote: " + remote + ", console command: " + remote.getCommand());
-		
+
 		int nextAskingCountSKP = 2;
 
 		// asking user to select his option after a failed attempt
@@ -107,10 +112,22 @@ public class TestClientSKP {
 	 */
 	private void setupLoggingLevelSKP() {
 		PropertyReaderSKP reader = new PropertyReaderSKP();
-		logger.setLevel(Level.parse(reader.getPropertyValue("logging.level")));
-		logger.info(reader.getPropertyValue("logging.level"));
+		Level loggingLevelSKP = null;
+		String returnedPropertySKP = reader.getPropertyValue("logging.level");
+		if (returnedPropertySKP != null) {
+			loggingLevelSKP = Level.parse(returnedPropertySKP);
+		} else {
+			loggingLevelSKP = Level.INFO;
+		}
+
+		logger.setLevel(loggingLevelSKP);
+		logger.fine(reader.getPropertyValue("logging.level"));
 	}
 
+	/**
+	 * Implementing command pattern. Setting command in console remote based on the
+	 * platform
+	 */
 	public void setUpPlatformBasedConsoleSKP() {
 
 		String os = System.getProperty("os.name");
