@@ -63,7 +63,7 @@ public class TestClientSKP {
 		// displaying user to enter the inputs and play the game
 		System.out.println("\n\n\n\n\n\n\n\tＷｅｌｃｏｍｅ ｔｏ Ａｎｉｍａｌ ｇａｍｅ" + "\n\t\t\t\tcopyright@2020\n");
 
-		System.out.println("\n\n\t________Available games__________\n");
+		System.out.println("\n\n\t________Ａｖａｉｌａｂｌｅ ｇａｍｅｓ__________\n");
 
 		System.out.println("\n\n\t\t1. Jungle book");
 		System.out.println("\n\t\t2. Soothranum Sheruvum\n\n");
@@ -73,7 +73,7 @@ public class TestClientSKP {
 
 		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
 
-		remote.clearScreen();
+		// remote.clearScreen();
 
 		logger.fine("remote: " + remote + ", console command: " + remote.getCommand());
 

@@ -15,6 +15,7 @@
 */
 package com.sanil.animalgame.utility;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,12 +44,21 @@ public class PropertyReaderSKP {
 	public PropertyReaderSKP() {
 
 		super();
+		System.out.println(System.getProperty("user.dir"));
+
+		propertiesSKP = new Properties();
 
 		try {
-			propertiesSKP = new Properties();
-			propertiesSKP.load(new FileInputStream(PROPERY_FILE_SKP));
+
+			if (new File(PROPERY_FILE_SKP).exists()) {
+				propertiesSKP.load(new FileInputStream(PROPERY_FILE_SKP));
+			} else {
+				propertiesSKP.load(new FileInputStream("../" + PROPERY_FILE_SKP));
+			}
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

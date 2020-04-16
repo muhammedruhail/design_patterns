@@ -16,6 +16,7 @@
 package com.sanil.animalgame.game;
 
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.command.ConsoleRemote;
 
 /**
  * Animal game abstract class. Only one instance of its children will be
@@ -85,6 +86,25 @@ public abstract class AnimalGameSKP {
 	 */
 	protected void showTheWelcomeScreen() {
 
+		ConsoleRemote remote = ConsoleRemote.getConsoleRemoteInstance();
+		remote.clearScreen();
+		String loading = "＃＃";
+		for (int i = 0; i < 3; i++) {
+			System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\t\t");
+			System.out.println("powered by animal game\n\n\n\t\t\t");
+			System.out.print("\t\t\t𝐿𝑜𝑎𝑑𝑖𝑛𝑔  " + (loading += loading));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			remote.clearScreen();
+		}
+		/*
+		 * System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\n\t\t\t\t\n");
+		 * System.out.println("\t\tpowered by animal game\n\n\n\n\n");
+		 */
 	}
 
 	/**
@@ -118,5 +138,10 @@ public abstract class AnimalGameSKP {
 	 * @return Hero character
 	 */
 	protected abstract AnimalSKP createHeroCharacter();
+
+	@Override
+	public String toString() {
+		return nameSKP;
+	}
 
 }
