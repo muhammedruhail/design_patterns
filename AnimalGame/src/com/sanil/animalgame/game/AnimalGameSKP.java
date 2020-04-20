@@ -15,6 +15,8 @@
 */
 package com.sanil.animalgame.game;
 
+import java.util.Scanner;
+
 import com.sanil.animalgame.animals.AnimalSKP;
 import com.sanil.animalgame.command.ConsoleRemoteSKP;
 
@@ -69,44 +71,60 @@ public abstract class AnimalGameSKP {
 	 * The method shows how to play the game
 	 */
 	private void showGameDetailsSKP() {
-		// TODO Auto-generated method stub
 
+		System.out.println("\n\n\n\n\t____________How to play________________\n");
+
+		System.out.println(
+				"\n\tThe characters in this game will be randomely placed in different caves. The goal is to predict "
+						+ "\n\teach animals in each cave in each visit. If you predict the hero character correctly, the score "
+						+ "\n\twill be increased to three times of the current score. It will be increasesd 2 times and 1 "
+						+ "\n\ttimes for friend and villain characters respectively\n\n\n");
+
+		Scanner scannerSKP = new Scanner(System.in);
+		ConsoleRemoteSKP remote = ConsoleRemoteSKP.getConsoleRemoteInstance();
+
+		System.out.println("\tPress any key to start the game: ");
+		scannerSKP.next();
+		remote.clearScreen();
+		scannerSKP.close();
 	}
 
 	/**
 	 * Place animals randomly in different caves
 	 */
-	private void placeAnimalsInCavesSKP() {
-		// TODO Auto-generated method stub
-
-	}
+	public abstract void placeAnimalsInCavesSKP();
 
 	/**
 	 * Shows the welcome screen
 	 */
-	protected void showTheWelcomeScreenSKP() {
+	protected final void showTheWelcomeScreenSKP() {
 
 		ConsoleRemoteSKP remoteSKP = ConsoleRemoteSKP.getConsoleRemoteInstance();
 		remoteSKP.clearScreen();
+
+		System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\t\t");
+		System.out.println("powered by animal game\n\n\n\t\t\t");
+		System.out.print("\t\t\t𝐿𝑜𝑎𝑑𝑖𝑛𝑔 ");
+
 		String loadingSKP = "＃＃";
+
 		for (int i = 0; i < 3; i++) {
-			System.out.print("\n\n\n\n\n\n\n\t" + toString() + "\t\t");
-			System.out.println("powered by animal game\n\n\n\t\t\t");
-			System.out.print("\t\t\t𝐿𝑜𝑎𝑑𝑖𝑛𝑔  " + (loadingSKP += loadingSKP));
+			System.out.print((loadingSKP += loadingSKP));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			remoteSKP.clearScreen();
 		}
+
+		remoteSKP.clearScreen();
 	}
 
 	/**
 	 * Shows character names and their nature of behaving
 	 */
-	private void showCharacterDescription() {
+	protected final void showCharacterDescription() {
 		// TODO Auto-generated method stub
 		ConsoleRemoteSKP.getConsoleRemoteInstance().clearScreen();
 		System.out.println("\n\n\n\n\t____________Characters and story summary_________________\n");

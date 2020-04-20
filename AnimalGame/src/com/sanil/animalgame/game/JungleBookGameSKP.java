@@ -117,4 +117,13 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 			return new MobileBasedAnimalJBFactorySKP();
 	}
 
+	/**
+	 * Placing animals randomly in the caves
+	 */
+	@Override
+	public void placeAnimalsInCavesSKP() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

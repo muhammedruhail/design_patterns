@@ -63,7 +63,7 @@ public class TestClientSKP {
 		// displaying user to enter the inputs and play the game
 		System.out.println("\n\n\n\n\n\n\n\tＷｅｌｃｏｍｅ ｔｏ Ａｎｉｍａｌ ｇａｍｅ" + "\n\t\t\t\tcopyright@2020\n");
 
-		System.out.println("\n\n\t________Ａｖａｉｌａｂｌｅ ｇａｍｅｓ__________\n");
+		System.out.println("\n\n\t_________Ａｖａｉｌａｂｌｅ ｇａｍｅｓ__________\n");
 
 		System.out.println("\n\n\t\t1. Jungle book");
 		System.out.println("\n\t\t2. Soothranum Sheruvum\n\n");

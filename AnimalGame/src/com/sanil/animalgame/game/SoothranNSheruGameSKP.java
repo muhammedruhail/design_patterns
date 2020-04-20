@@ -107,4 +107,13 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 			return new MobileBasedAnimalSRFactorySKP();
 	}
 
+	/**
+	 * Placing animals randomly in the caves
+	 */
+	@Override
+	public void placeAnimalsInCavesSKP() {
+		// TODO Auto-generated method stub
+
+	}
+
 }
