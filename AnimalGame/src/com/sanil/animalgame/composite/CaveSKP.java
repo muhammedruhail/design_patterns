@@ -15,6 +15,10 @@
 */
 package com.sanil.animalgame.composite;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * This class is a participant both in prototype and composite
  * 
@@ -23,7 +27,45 @@ package com.sanil.animalgame.composite;
 public abstract class CaveSKP extends ForestComponentSKP {
 
 	/**
-	 * @return A cloned cave. A method used to clone objects in Prototype pattern
+	 * Name of the cave
+	 */
+	protected final String nameSKP;
+
+	public String getNameSKP() {
+		return nameSKP;
+	}
+
+	/**
+	 * List to store caves and other animals
+	 */
+	List<ForestComponentSKP> innerForestComponentsSKP = new ArrayList<ForestComponentSKP>();
+
+	public CaveSKP(String name) {
+		super();
+		this.nameSKP = name;
+	}
+
+	/**
+	 * @return A cloned cave. A method used to clone objects in Prototype
+	 *         pattern(assuming the creation of caves is expensive)
 	 */
 	public abstract CaveSKP cloneSKP();
+
+	/**
+	 * Returning iterator to iterate over the innerForestComponentsSKP list.
+	 */
+	@Override
+	public Iterator<ForestComponentSKP> createIteratorSKP() {
+
+		return innerForestComponentsSKP.iterator();
+	}
+
+	/**
+	 * Overriding component method. Part of composite pattern
+	 */
+	@Override
+	public void showDetailsSKP() {
+		System.out.println("n\t________Now in " + nameSKP + "_________");
+	}
+
 }

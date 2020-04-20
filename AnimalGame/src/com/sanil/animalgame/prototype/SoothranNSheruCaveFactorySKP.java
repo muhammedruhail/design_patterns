@@ -38,13 +38,13 @@ public class SoothranNSheruCaveFactorySKP {
 
 	static {
 
-		SoothranCaveSKP soothranCaveSKP = new SoothranCaveSKP();
-		SheruCaveSKP sheruCaveSKP = new SheruCaveSKP();
-		KadiyanCaveSKP kadiyanCaveSKP = new KadiyanCaveSKP();
+		SoothranCaveSKP soothranCaveSKP = new SoothranCaveSKP("Soothran's cave");
+		SheruCaveSKP sheruCaveSKP = new SheruCaveSKP("Sheru's cave");
+		KadiyanCaveSKP kadiyanCaveSKP = new KadiyanCaveSKP("Kadiyan's cave");
 
-		cavePrototypes.put(soothranCaveSKP.getName(), soothranCaveSKP);
-		cavePrototypes.put(sheruCaveSKP.getName(), sheruCaveSKP);
-		cavePrototypes.put(kadiyanCaveSKP.getName(), kadiyanCaveSKP);
+		cavePrototypes.put(soothranCaveSKP.getNameSKP(), soothranCaveSKP);
+		cavePrototypes.put(sheruCaveSKP.getNameSKP(), sheruCaveSKP);
+		cavePrototypes.put(kadiyanCaveSKP.getNameSKP(), kadiyanCaveSKP);
 	}
 
 	/**

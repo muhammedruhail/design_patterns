@@ -16,16 +16,22 @@
 package com.sanil.animalgame.composite;
 
 /**
- * TODO Provide a detailed description here
+ * One implementation of cave. object will be created using a prototype patterns
+ * as this objects are treated as expensive objects(assumption)
  * 
  * @author Sanil kumar P
  */
 public class BaluCaveSKP extends CaveSKP {
 
 	/**
-	 * Name of the cave
+	 * Constructor for class BaluCaveSKP
+	 * 
+	 * @param string
 	 */
-	private final String name = "Balu's cave";
+	public BaluCaveSKP(String nameSKP) {
+
+		super(nameSKP);
+	}
 
 	/**
 	 * Clone {@link BaluCaveSKP}
@@ -35,16 +41,7 @@ public class BaluCaveSKP extends CaveSKP {
 	@Override
 	public CaveSKP cloneSKP() {
 
-		return new BaluCaveSKP();
-	}
-
-	/**
-	 * getter for name
-	 * 
-	 * @return name
-	 */
-	public String getName() {
-		return name;
+		return new BaluCaveSKP(nameSKP);
 	}
 
 }

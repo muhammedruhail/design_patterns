@@ -36,17 +36,18 @@ public class JungleBookCaveFactorySKP {
 	 */
 	public static final Map<String, CaveSKP> cavePrototypes = new HashMap<String, CaveSKP>();
 
+	// static block to create object (assuming these object creations are expensive)
 	static {
 
-		MowgliCaveSKP mowgliCaveSKP = new MowgliCaveSKP();
-		BaluCaveSKP baluCaveSKP = new BaluCaveSKP();
-		BagheeraCaveSKP bagheeraCaveSKP = new BagheeraCaveSKP();
-		SherekhanCaveSKP sherekhanCaveSKP = new SherekhanCaveSKP();
+		MowgliCaveSKP mowgliCaveSKP = new MowgliCaveSKP("Mowgli's cave");
+		BaluCaveSKP baluCaveSKP = new BaluCaveSKP("Balu's cave");
+		BagheeraCaveSKP bagheeraCaveSKP = new BagheeraCaveSKP("Bhageera's cave");
+		SherekhanCaveSKP sherekhanCaveSKP = new SherekhanCaveSKP("Shere khan's cave");
 
-		cavePrototypes.put(mowgliCaveSKP.getName(), mowgliCaveSKP);
-		cavePrototypes.put(baluCaveSKP.getName(), baluCaveSKP);
-		cavePrototypes.put(bagheeraCaveSKP.getName(), bagheeraCaveSKP);
-		cavePrototypes.put(sherekhanCaveSKP.getName(), sherekhanCaveSKP);
+		cavePrototypes.put(mowgliCaveSKP.getNameSKP(), mowgliCaveSKP);
+		cavePrototypes.put(baluCaveSKP.getNameSKP(), baluCaveSKP);
+		cavePrototypes.put(bagheeraCaveSKP.getNameSKP(), bagheeraCaveSKP);
+		cavePrototypes.put(sherekhanCaveSKP.getNameSKP(), sherekhanCaveSKP);
 	}
 
 	/**

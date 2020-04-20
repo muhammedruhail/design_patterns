@@ -15,12 +15,45 @@
 */
 package com.sanil.animalgame.composite;
 
+import java.util.Iterator;
+
 /**
  * Forest component is the type used to treat forest, caves and animals in
  * similar manner(Composite pattern).
  * 
  * @author Sanil kumar P
  */
-public class ForestComponentSKP {
+public abstract class ForestComponentSKP {
 
+	/**
+	 * Showing description of a component. To be implemented by the sub classes
+	 * according to their needs
+	 */
+	public void showDetailsSKP() {
+
+		throw new UnsupportedOperationException("The operation is not applicable for this component");
+	}
+
+	/**
+	 * Add new sub component to the collection
+	 */
+	public void addChildSKP(ForestComponentSKP forestComponent) {
+
+		throw new UnsupportedOperationException("The operation is not applicable for this component");
+	}
+
+	/**
+	 * Remove a sub component from the collection
+	 */
+	public void removeChildSKP() {
+
+		throw new UnsupportedOperationException("The operation is not applicable for this component");
+	}
+
+	/**
+	 * A method to create the iterator for the iteration on the aggregate.
+	 * 
+	 * @return iterator for the iteration
+	 */
+	public abstract Iterator<ForestComponentSKP> createIteratorSKP();
 }
