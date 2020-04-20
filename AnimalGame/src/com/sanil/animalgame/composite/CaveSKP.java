@@ -31,14 +31,22 @@ public abstract class CaveSKP extends ForestComponentSKP {
 	 */
 	protected final String nameSKP;
 
-	public String getNameSKP() {
-		return nameSKP;
-	}
-
 	/**
 	 * List to store caves and other animals
 	 */
 	List<ForestComponentSKP> innerForestComponentsSKP = new ArrayList<ForestComponentSKP>();
+
+	public List<ForestComponentSKP> getInnerForestComponentsSKP() {
+		return innerForestComponentsSKP;
+	}
+
+	public void setInnerForestComponentsSKP(List<ForestComponentSKP> innerForestComponentsSKP) {
+		this.innerForestComponentsSKP = innerForestComponentsSKP;
+	}
+
+	public String getNameSKP() {
+		return nameSKP;
+	}
 
 	public CaveSKP(String name) {
 		super();
@@ -65,7 +73,13 @@ public abstract class CaveSKP extends ForestComponentSKP {
 	 */
 	@Override
 	public void showDetailsSKP() {
-		System.out.println("n\t________Now in " + nameSKP + "_________");
+		System.out.println("\n\t________Now in " + nameSKP + "_________");
+	}
+
+	@Override
+	public void addChildSKP(ForestComponentSKP forestComponentSKP) {
+
+		innerForestComponentsSKP.add(forestComponentSKP);
 	}
 
 }

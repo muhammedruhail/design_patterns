@@ -15,7 +15,15 @@
 */
 package com.sanil.animalgame.game;
 
+import java.util.Random;
+import java.util.logging.Logger;
+
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.composite.ForestComponentSKP;
+import com.sanil.animalgame.composite.ForestSKP;
+import com.sanil.animalgame.composite.KadiyanCaveSKP;
+import com.sanil.animalgame.composite.SheruCaveSKP;
+import com.sanil.animalgame.composite.SoothranCaveSKP;
 import com.sanil.animalgame.decorator.CunningAnimalDecoratorSKP;
 import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalSRFactorySKP;
@@ -33,6 +41,11 @@ import com.sanil.animalgame.utility.PropertyReaderSKP;
  * @author Sanil kumar P
  */
 public class SoothranNSheruGameSKP extends AnimalGameSKP {
+
+	/**
+	 * Logger instance to log details
+	 */
+	private static Logger logger = Logger.getLogger("Animal Game");
 
 	private SoothranNSheruGameSKP() {
 		super("\n" + "░█▀▀▀█ █▀▀█ █▀▀█ ▀▀█▀▀ █──█ █▀▀█ █▀▀█ █▀▀▄ 　 ░█▄─░█ 　 ░█▀▀▀█ █──█ █▀▀ █▀▀█ █──█ \n"
@@ -112,7 +125,30 @@ public class SoothranNSheruGameSKP extends AnimalGameSKP {
 	 */
 	@Override
 	public void placeAnimalsInCavesSKP() {
-		// TODO Auto-generated method stub
+
+		// singleton instance of forest
+		ForestSKP forestSKP = ForestSKP.getForestInstance();
+
+		// collection of caves
+		ForestComponentSKP[] cavesSKP = new ForestComponentSKP[] { new SoothranCaveSKP("Soothran's cave"),
+				new SheruCaveSKP("Sheru's cave"), new KadiyanCaveSKP("Kadiyan's cave") };
+
+		// array of characters
+		ForestComponentSKP[] forestCharactersSKP = new ForestComponentSKP[] { heroCharacter, friendCharacter,
+				villainCharacter };
+
+		// loop for randomly placing animals in the caves
+		for (ForestComponentSKP characterSKP : forestCharactersSKP) {
+
+			int randomValueSKP = new Random().nextInt(cavesSKP.length);
+
+			logger.fine("random number: :" + randomValueSKP);
+
+			cavesSKP[randomValueSKP].addChildSKP(characterSKP);
+
+		}
+
+		forestSKP.setCavesSKP(cavesSKP);
 
 	}
 

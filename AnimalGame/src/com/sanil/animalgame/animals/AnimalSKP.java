@@ -15,6 +15,9 @@
 */
 package com.sanil.animalgame.animals;
 
+import java.util.Iterator;
+
+import com.sanil.animalgame.composite.ForestComponentSKP;
 import com.sanil.animalgame.strategy.BehaviourStrategySKP;
 
 /**
@@ -27,12 +30,18 @@ import com.sanil.animalgame.strategy.BehaviourStrategySKP;
  * 
  * @author Sanil kumar P
  */
-public abstract class AnimalSKP {
+public abstract class AnimalSKP extends ForestComponentSKP {
 
 	/**
 	 * name of animal
 	 */
 	protected String nameSKP;
+
+	@Override
+	public Iterator<ForestComponentSKP> createIteratorSKP() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/**
 	 * @return name

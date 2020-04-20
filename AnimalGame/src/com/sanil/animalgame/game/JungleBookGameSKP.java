@@ -15,7 +15,16 @@
 */
 package com.sanil.animalgame.game;
 
+import java.util.Random;
+import java.util.logging.Logger;
+
 import com.sanil.animalgame.animals.AnimalSKP;
+import com.sanil.animalgame.composite.BagheeraCaveSKP;
+import com.sanil.animalgame.composite.BaluCaveSKP;
+import com.sanil.animalgame.composite.ForestComponentSKP;
+import com.sanil.animalgame.composite.ForestSKP;
+import com.sanil.animalgame.composite.MowgliCaveSKP;
+import com.sanil.animalgame.composite.SherekhanCaveSKP;
 import com.sanil.animalgame.decorator.HeroAnimalDecoratorSKP;
 import com.sanil.animalgame.factory.AnimalCharacterAbstractFactorySKP;
 import com.sanil.animalgame.factory.IOTBasedAnimalJBFactorySKP;
@@ -36,6 +45,11 @@ import com.sanil.animalgame.utility.PropertyReaderSKP;
  * @author Sanil kumar P
  */
 public class JungleBookGameSKP extends AnimalGameSKP {
+
+	/**
+	 * Logger instance to log details
+	 */
+	private static Logger logger = Logger.getLogger("Animal Game");
 
 	/**
 	 * Private constructor for class JungleBookGameSKP to prevent creation of more
@@ -118,11 +132,33 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 	}
 
 	/**
-	 * Placing animals randomly in the caves
+	 * LLogic for Placing animals randomly in the caves.
 	 */
 	@Override
 	public void placeAnimalsInCavesSKP() {
-		// TODO Auto-generated method stub
+
+		// singleton instance of forest
+		ForestSKP forestSKP = ForestSKP.getForestInstance();
+
+		// collection of caves
+		ForestComponentSKP[] cavesSKP = new ForestComponentSKP[] { new MowgliCaveSKP("Mowgli's cave"),
+				new BaluCaveSKP("Balu's cave"), new BagheeraCaveSKP("Bagheera's cave"),
+				new SherekhanCaveSKP("Shere khan's cave") };
+
+		// array of characters
+		ForestComponentSKP[] forestCharactersSKP = new ForestComponentSKP[] { heroCharacter, friendCharacter,
+				villainCharacter };
+
+		// loop for randomly placing animals in the caves
+		for (ForestComponentSKP characterSKP : forestCharactersSKP) {
+
+			int randomValueSKP = new Random().nextInt(cavesSKP.length);
+			logger.fine("random number: :" + randomValueSKP);
+			cavesSKP[randomValueSKP].addChildSKP(characterSKP);
+
+		}
+
+		forestSKP.setCavesSKP(cavesSKP);
 
 	}
 

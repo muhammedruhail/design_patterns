@@ -24,6 +24,8 @@ import java.util.Iterator;
  */
 public class ForestSKP extends ForestComponentSKP {
 
+	private static ForestSKP forestInstance;
+
 	/**
 	 * Name of the forest
 	 */
@@ -34,6 +36,23 @@ public class ForestSKP extends ForestComponentSKP {
 	 * implementation of composite pattern
 	 */
 	ForestComponentSKP[] cavesSKP = new ForestComponentSKP[10];
+
+	/**
+	 * Constructor for class ForestSKP
+	 * 
+	 * @param cavesSKP
+	 */
+	private ForestSKP() {
+		super();
+	}
+
+	public ForestComponentSKP[] getCavesSKP() {
+		return cavesSKP;
+	}
+
+	public void setCavesSKP(ForestComponentSKP[] cavesSKP) {
+		this.cavesSKP = cavesSKP;
+	}
 
 	@Override
 	public void showDetailsSKP() {
@@ -60,4 +79,10 @@ public class ForestSKP extends ForestComponentSKP {
 		return null;
 	}
 
+	public static ForestSKP getForestInstance() {
+
+		forestInstance = (forestInstance != null) ? forestInstance : new ForestSKP();
+
+		return forestInstance;
+	}
 }
