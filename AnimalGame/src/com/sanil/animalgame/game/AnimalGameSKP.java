@@ -15,10 +15,14 @@
 */
 package com.sanil.animalgame.game;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.sanil.animalgame.animals.AnimalSKP;
 import com.sanil.animalgame.command.ConsoleRemoteSKP;
+import com.sanil.animalgame.composite.ForestComponentSKP;
+import com.sanil.animalgame.composite.ForestSKP;
+import com.sanil.animalgame.iterator.CompositeIteratorSKP;
 
 /**
  * Animal game abstract class. Only one instance of its children will be
@@ -36,10 +40,19 @@ public abstract class AnimalGameSKP {
 	 */
 	protected String nameSKP;
 
+	/**
+	 * Hero character
+	 */
 	protected AnimalSKP heroCharacter;
 
+	/**
+	 * Villain character
+	 */
 	protected AnimalSKP villainCharacter;
 
+	/**
+	 * Friend character
+	 */
 	protected AnimalSKP friendCharacter;
 
 	/**
@@ -65,6 +78,23 @@ public abstract class AnimalGameSKP {
 		showCharacterDescription();
 		showGameDetailsSKP();
 		placeAnimalsInCavesSKP();
+		playGame();
+	}
+
+	/**
+	 * Here we actually play the game by traveling through the composite and showing
+	 * each forest component
+	 */
+	private void playGame() {
+
+		ForestComponentSKP forest = ForestSKP.getForestInstance();
+		Iterator<ForestComponentSKP> forestIterator = forest.createIteratorSKP();
+		Iterator<ForestComponentSKP> iterator = new CompositeIteratorSKP(forestIterator);
+
+		while (iterator.hasNext()) {
+			iterator.next().showDetailsSKP();
+		}
+
 	}
 
 	/**

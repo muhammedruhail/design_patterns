@@ -31,7 +31,7 @@ public class ArrayIteratorSKP implements Iterator<ForestComponentSKP> {
 	/**
 	 * The array which this iterator is iterated over
 	 */
-	private ForestComponentSKP[] componentsSKP = new ForestComponentSKP[10];
+	private ForestComponentSKP[] componentsSKP;
 
 	/**
 	 * The current position/index of the array
@@ -57,7 +57,7 @@ public class ArrayIteratorSKP implements Iterator<ForestComponentSKP> {
 	@Override
 	public boolean hasNext() {
 
-		return (componentsSKP[currentPositionSKP] == null) ? false : true;
+		return (currentPositionSKP >= componentsSKP.length) ? false : true;
 	}
 
 	/**
@@ -68,7 +68,11 @@ public class ArrayIteratorSKP implements Iterator<ForestComponentSKP> {
 	@Override
 	public ForestComponentSKP next() {
 
-		return componentsSKP[currentPositionSKP++];
+		if (hasNext())
+			return componentsSKP[currentPositionSKP++];
+
+		else
+			return null;
 	}
 
 }

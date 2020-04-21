@@ -49,9 +49,11 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 	}
 
 	/**
+	 * Getter for name
+	 * 
 	 * @return name
 	 */
-	public String getName() {
+	public String getNameSKP() {
 		return nameSKP;
 	}
 
@@ -60,7 +62,7 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 	 * 
 	 * @param name
 	 */
-	public void setName(String name) {
+	public void setNameSKP(String name) {
 		this.nameSKP = name;
 	}
 
@@ -78,6 +80,11 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 		return behaviourSKP;
 	}
 
+	/**
+	 * Setter for behhaviour
+	 * 
+	 * @param behaviour
+	 */
 	public void setBehaviour(BehaviourStrategySKP behaviour) {
 		this.behaviourSKP = behaviour;
 	}
@@ -87,7 +94,6 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 	 */
 	public AnimalSKP() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -115,4 +121,11 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 		return nameSKP;
 	}
 
+	/**
+	 * This method shows the details of this {@link ForestComponentSKP}(Animal).
+	 */
+	@Override
+	public void showDetailsSKP() {
+		System.out.println("\n\t\t Found " + toString());
+	}
 }

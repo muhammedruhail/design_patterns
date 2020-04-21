@@ -82,7 +82,7 @@ public class JungleBookGameSKP extends AnimalGameSKP {
 
 		AnimalSKP animal = getAppropriateFactory().createFriendCharacter();
 
-		BehaviourStrategySKP behaviour = (animal.getName().equals("bagheera")) ? new GoodBlackPantherSKP()
+		BehaviourStrategySKP behaviour = (animal.getNameSKP().equals("bagheera")) ? new GoodBlackPantherSKP()
 				: new GreedySlothBearSKP();
 		animal.setBehaviour(behaviour);
 		return animal;

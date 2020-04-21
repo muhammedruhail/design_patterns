@@ -51,8 +51,19 @@ public class CompositeIteratorSKP implements Iterator<ForestComponentSKP> {
 	 */
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
+
+		if (!stack.isEmpty()) {
+			Iterator<ForestComponentSKP> iterator = stack.peekFirst();
+
+			if (iterator.hasNext()) {
+				return iterator.hasNext();
+			} else {
+				stack.removeFirst();
+				return hasNext();
+			}
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -62,8 +73,18 @@ public class CompositeIteratorSKP implements Iterator<ForestComponentSKP> {
 	 */
 	@Override
 	public ForestComponentSKP next() {
-		// TODO Auto-generated method stub
-		return null;
+
+		if (hasNext()) {
+
+			ForestComponentSKP forestComponent = stack.peekFirst().next();
+
+			stack.push(forestComponent.createIteratorSKP());
+
+			return forestComponent;
+
+		} else {
+			return null;
+		}
 	}
 
 }

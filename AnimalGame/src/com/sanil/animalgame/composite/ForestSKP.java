@@ -20,7 +20,8 @@ import java.util.Iterator;
 import com.sanil.animalgame.iterator.ArrayIteratorSKP;
 
 /**
- * A forest specially designed for Animal game.
+ * A forest specially designed for Animal game. The {@link ForestSKP} is
+ * singleton
  * 
  * @author Sanil kumar P
  */
