@@ -18,15 +18,12 @@ package com.sanil.animalgame.animals;
 import java.util.Iterator;
 
 import com.sanil.animalgame.composite.ForestComponentSKP;
+import com.sanil.animalgame.iterator.NullIteratorSKP;
 import com.sanil.animalgame.strategy.BehaviourStrategySKP;
 
 /**
- * Animal super class. Strategy pattern implemented
- * 
- * @author Sanil kumar P
- */
-/**
- * TODO Provide a detailed description here
+ * Animal super class. Strategy pattern implemented. The behaviourSKP variable
+ * is a Strategy object
  * 
  * @author Sanil kumar P
  */
@@ -37,10 +34,18 @@ public abstract class AnimalSKP extends ForestComponentSKP {
 	 */
 	protected String nameSKP;
 
+	/**
+	 * Create iterator for animal class. As {@link AnimalSKP} is a leaf node in the
+	 * composite component structure, we create a special {@link NullIteratorSKP}
+	 * for Animal class which return false for hasNext method and null for next
+	 * method.
+	 * 
+	 * @return A {@link NullIteratorSKP}
+	 */
 	@Override
 	public Iterator<ForestComponentSKP> createIteratorSKP() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return new NullIteratorSKP();
 	}
 
 	/**

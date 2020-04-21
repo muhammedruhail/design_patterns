@@ -17,6 +17,8 @@ package com.sanil.animalgame.composite;
 
 import java.util.Iterator;
 
+import com.sanil.animalgame.iterator.ArrayIteratorSKP;
+
 /**
  * A forest specially designed for Animal game.
  * 
@@ -71,14 +73,24 @@ public class ForestSKP extends ForestComponentSKP {
 	}
 
 	/**
-	 * To be implemented
+	 * Create iterator for {@link ForestComponentSKP} to iterate over its sub
+	 * components.
+	 * 
+	 * @return return an array iterator
 	 */
 	@Override
 	public Iterator<ForestComponentSKP> createIteratorSKP() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return new ArrayIteratorSKP(cavesSKP);
 	}
 
+	/**
+	 * Static method to get the {@link ForestSKP} instance. This is the static
+	 * method used to create the object of this class( Singleton pattern
+	 * implemented)
+	 * 
+	 * @return A {@link ForestComponentSKP} instance.
+	 */
 	public static ForestSKP getForestInstance() {
 
 		forestInstance = (forestInstance != null) ? forestInstance : new ForestSKP();
